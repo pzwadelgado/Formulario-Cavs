@@ -1,0 +1,737 @@
+/* === [SECCIÓN CSS 1: PALETA DE COLORES POZUELO Y CAVS] === */
+:root {
+  --pozuelo-red: #d9232e;
+  --pozuelo-red-hover: #b51923;
+  --pozuelo-red-soft: #fef2f2;
+  --pozuelo-yellow: #f59e0b;
+  --pozuelo-yellow-soft: #fef3c7;
+  --pozuelo-yellow-text: #b45309;
+  --cavs-teal: #0f4c5c;
+  --cavs-teal-hover: #0b3945;
+  --cavs-teal-soft: #e6f0f2;
+
+  --bg-page: #f1f5f9;
+  --bg-card: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+
+  --success: #10b981;
+  --success-bg: #ecfdf5;
+  --success-border: #a7f3d0;
+  --error: #dc2626;
+  --error-bg: #fef2f2;
+  --error-border: #fecaca;
+
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08);
+  --radius-lg: 14px;
+  --radius-md: 10px;
+}
+
+/* === [SECCIÓN CSS 2: ESTILOS BASE Y TIPOGRAFÍA] === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === [SECCIÓN CSS 3: ENCABEZADO SUPERIOR Y DOBLE LOGO] === */
+
+/* --- Submódulo 3.1: Contenedor Principal y Alineación Central --- */
+.topbar {
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.topbar-inner {
+  max-width: 820px; /* Acerca ambos logos hacia el centro al ancho del formulario */
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* --- Submódulo 3.2: Marca Izquierda, Logo Pozuelo (+8%) y Títulos --- */
+.brand-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo-pozuelo {
+  height: 48px; /* +8% respecto a los 44px originales */
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.logo-fallback-pozuelo {
+  background: var(--pozuelo-red);
+  color: #ffc72c;
+  font-weight: 800;
+  font-size: 13px;
+  padding: 8px 12px;
+  border-radius: 50%;
+  border: 2px solid #ffc72c;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-titles h1 {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.brand-titles p {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* --- Submódulo 3.3: Marca Derecha y Logo CAVS (+8%) --- */
+.brand-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo-cavs {
+  height: 58px; /* +8% respecto a los 54px originales */
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+}
+
+.logo-fallback-cavs {
+  background: var(--cavs-teal);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 13px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 2px solid var(--pozuelo-red);
+}
+
+/* === [SECCIÓN CSS 4: PANEL DE KPI, BORRADOR Y BARRA DE PASOS] === */
+.main-wrapper {
+  max-width: 860px;
+  width: 100%;
+  margin: 22px auto;
+  padding: 0 16px;
+  flex: 1;
+}
+
+.intro-banner {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  border-top: 5px solid var(--pozuelo-red);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.intro-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.intro-info h2 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.intro-info p {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+}
+
+.required-note {
+  color: var(--pozuelo-red);
+  font-weight: 600;
+}
+
+.live-kpis {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.kpi-chip {
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.kpi-chip.kpi-ok {
+  background: var(--success-bg);
+  border-color: var(--success-border);
+  color: #065f46;
+}
+
+.kpi-chip.kpi-alert {
+  background: var(--error-bg);
+  border-color: var(--error-border);
+  color: #991b1b;
+}
+
+.draft-banner {
+  margin-top: 12px;
+  padding: 8px 14px;
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  font-size: 12.5px;
+  color: #1e40af;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-link-reset {
+  background: none;
+  border: none;
+  color: var(--pozuelo-red);
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.stepper-bar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+.step-pill {
+  text-align: center;
+  padding: 8px 6px;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  border: 1px solid var(--border-color);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.step-pill.active {
+  background-color: var(--pozuelo-red-soft);
+  border-color: var(--pozuelo-red);
+  color: var(--pozuelo-red);
+}
+
+.step-pill.completed {
+  background-color: var(--cavs-teal-soft);
+  border-color: var(--cavs-teal);
+  color: var(--cavs-teal);
+}
+
+/* === [SECCIÓN CSS 5: TARJETAS DE SECCIÓN E ÍTEMS DE INSPECCIÓN] === */
+.paso {
+  display: none;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.paso.activo {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section-header-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 8px 0 14px 0;
+}
+
+.seccion-titulo {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--cavs-teal);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-bulk-ok {
+  background-color: var(--bg-card);
+  color: #065f46;
+  border: 1px solid var(--success);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-bulk-ok:hover {
+  background-color: var(--success-bg);
+}
+
+.step-counter {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 18px 22px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  border-color: #cbd5e1;
+  box-shadow: var(--shadow-md);
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.item-info {
+  flex: 1;
+  min-width: 240px;
+}
+
+.item-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.item-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.stock-badge {
+  display: inline-block;
+  background-color: var(--cavs-teal-soft);
+  color: var(--cavs-teal);
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 999px;
+  border: 1px solid #bae6fd;
+}
+
+.required {
+  color: var(--pozuelo-red);
+  font-weight: 700;
+}
+
+.item-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+/* === [SECCIÓN CSS 6: BOTONES DE EVALUACIÓN CUMPLE / NO CUMPLE] === */
+.eval-toggle-group {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.eval-btn {
+  padding: 9px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: #f8fafc;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.eval-btn:hover {
+  background-color: #f1f5f9;
+}
+
+.eval-btn.selected-cumple {
+  background-color: var(--success-bg);
+  border-color: var(--success);
+  color: #065f46;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.15);
+}
+
+.eval-btn.selected-nocumple {
+  background-color: var(--error-bg);
+  border-color: var(--error);
+  color: #991b1b;
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.15);
+}
+
+select.input-base,
+input[type="text"].input-base,
+textarea,
+input[type="number"] {
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: #f8fafc;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+select.input-base:focus,
+input[type="text"].input-base:focus,
+textarea:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--pozuelo-red);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(217, 35, 46, 0.12);
+}
+
+/* === [SECCIÓN CSS 7: BLOQUE DE HALLAZGOS, STOCK FALTANTE Y ERRORES] === */
+.incumplimiento-box {
+  display: none;
+  margin-top: 14px;
+  padding: 16px;
+  background-color: var(--error-bg);
+  border: 1px solid var(--error-border);
+  border-left: 4px solid var(--error);
+  border-radius: var(--radius-md);
+}
+
+.incumplimiento-box h4 {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #991b1b;
+  margin-bottom: 8px;
+}
+
+.incumplimiento-box label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #7f1d1d;
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+
+.incumplimiento-box textarea,
+.incumplimiento-box input[type="number"] {
+  background-color: #ffffff;
+  margin-top: 0;
+}
+
+.botiquin-qty-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+input[type="file"].file-inc {
+  width: 100%;
+  padding: 8px;
+  font-size: 13px;
+  background: #ffffff;
+  border: 1px dashed #fca5a5;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.card-error {
+  border-color: var(--error) !important;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.14) !important;
+}
+
+.error-input {
+  border-color: var(--error) !important;
+  background-color: #fffafa !important;
+}
+
+.mensaje-error {
+  display: none;
+  color: var(--error);
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+.card-error > .mensaje-error,
+.error-input + .mensaje-error {
+  display: block;
+}
+
+/* === [SECCIÓN CSS 8: BOTONES DE NAVEGACIÓN, RESUMEN Y PIE DE PÁGINA] === */
+.summary-box {
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.summary-stat span {
+  display: block;
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+.summary-stat strong {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0 36px 0;
+}
+
+.btn-nav {
+  padding: 12px 24px;
+  font-size: 14.5px;
+  font-weight: 600;
+  font-family: inherit;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-back {
+  background-color: #e2e8f0;
+  color: var(--text-primary);
+}
+
+.btn-back:hover {
+  background-color: #cbd5e1;
+}
+
+.btn-next {
+  background-color: var(--cavs-teal);
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(15, 76, 92, 0.22);
+}
+
+.btn-next:hover {
+  background-color: var(--cavs-teal-hover);
+  transform: translateY(-1px);
+}
+
+.btn-final {
+  background-color: var(--pozuelo-red);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(217, 35, 46, 0.28);
+}
+
+.btn-final:hover {
+  background-color: var(--pozuelo-red-hover);
+  transform: translateY(-1px);
+}
+
+.app-footer {
+  text-align: center;
+  padding: 16px;
+  font-size: 12px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-card);
+}
+
+/* === [SECCIÓN CSS 9: OVERLAY DE CARGA Y DISEÑO RESPONSIVE MÓVIL] === */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+}
+
+.loading-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.loading-card {
+  background: var(--bg-card);
+  padding: 32px 36px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  max-width: 380px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.spinner {
+  width: 44px;
+  height: 44px;
+  border: 4px solid #e2e8f0;
+  border-top-color: var(--pozuelo-red);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+  margin: 0 auto 16px auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.loading-subtext {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* === [SECCIÓN CSS FINAL: DISEÑO RESPONSIVO UNIFICADO PARA CELULARES] === */
+@media (max-width: 640px) {
+  /* --- Submódulo Móvil 1: Ajuste de Encabezado y Logos --- */
+  .topbar-inner {
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  .brand-left {
+    gap: 10px;
+  }
+
+  .logo-pozuelo {
+    height: 38px;
+  }
+
+  .logo-cavs {
+    height: 46px;
+  }
+
+  .brand-titles h1 {
+    font-size: 16.5px;
+  }
+
+  .brand-titles p {
+    font-size: 11.5px;
+  }
+
+  /* --- Submódulo Móvil 2: Elementos de la interfaz (Ocultar Badge, Stepper) --- */
+  .sp-badge {
+    display: none;
+  }
+
+  .stepper-bar {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  /* --- Submódulo Móvil 3: Contenedores, Pestañas y Ergonomía Táctil --- */
+  .main-wrapper,
+  .main-container,
+  .card,
+  .step-card {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .eval-toggle-group {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .eval-btn {
+    flex: 1;
+    text-align: center;
+  }
+
+  .botiquin-qty-grid {
+    grid-template-columns: 1fr;
+  }
+
+  button {
+    min-height: 44px; /* Área táctil mínima recomendada para pulgar en campo */
+  }
+
+  select,
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    font-size: 16px !important; /* Evita el zoom automático en iOS y Android */
+  }
+}

@@ -1,0 +1,86 @@
+<!-- === [SECCIÓN HTML 0: CABECERA TÉCNICA, VIEWPORT Y ESTILOS] === -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inspecciones CAVS • Pozuelo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- === [SECCIÓN HTML 1: PANTALLA DE CARGA Y SINCRONIZACIÓN] === -->
+  <div id="loading-overlay" class="loading-overlay" aria-hidden="true">
+    <div class="loading-card">
+      <div class="spinner"></div>
+      <div class="loading-text">Sincronizando con SharePoint...</div>
+      <div class="loading-subtext">Subiendo evidencias y registrando hallazgos. Por favor, no cierres esta ventana.</div>
+    </div>
+  </div>
+
+  <!-- === [SECCIÓN HTML 2: ENCABEZADO CORPORATIVO CON DOBLE LOGO] === -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <!-- Izquierda: Logo Pozuelo + Identidad del Aplicativo -->
+      <div class="brand-left">
+        <img src="assets/logo-pozuelo.png" alt="Logo Pozuelo" class="logo-pozuelo"
+             onerror="this.style.display='none'; document.getElementById('fallback-pozuelo').style.display='flex';">
+        <div id="fallback-pozuelo" class="logo-fallback-pozuelo" style="display:none;">POZUELO</div>
+
+        <div class="brand-titles">
+          <h1>Inspecciones CAVS</h1>
+          <p>Seguridad y Salud en el Trabajo</p>
+        </div>
+      </div>
+
+      <!-- Derecha: Logo CAVS -->
+      <div class="brand-right">
+        <img src="assets/logo-cavs.png" alt="Logo CAVS Pozuelo" class="logo-cavs"
+             onerror="this.style.display='none'; document.getElementById('fallback-cavs').style.display='flex';">
+        <div id="fallback-cavs" class="logo-fallback-cavs" style="display:none;">CAVS</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- === [SECCIÓN HTML 3: PANEL DE CONTROL, MÉTRICAS Y CONTENEDOR DINÁMICO] === -->
+  <main class="main-wrapper">
+    <section class="intro-banner">
+      <div class="intro-top-row">
+        <div class="intro-info">
+          <h2>Protocolo de Inspección Mensual</h2>
+          <p>Evaluación técnica de máquinas, peso libre, infraestructura y botiquín CAVS. <span class="required-note">* Todos los puntos son obligatorios.</span></p>
+        </div>
+
+        <div class="live-kpis">
+          <div class="kpi-chip">Avance: <strong id="kpi-avance">0/55</strong></div>
+          <div class="kpi-chip kpi-ok">Cumplen: <strong id="kpi-cumplen">0</strong></div>
+          <div class="kpi-chip kpi-alert">Hallazgos: <strong id="kpi-hallazgos">0</strong></div>
+        </div>
+      </div>
+
+      <!-- Aviso de recuperación automática de borrador -->
+      <div id="draft-banner" class="draft-banner" style="display:none;">
+        <span>💾 Borrador recuperado automáticamente en este dispositivo.</span>
+        <button type="button" class="btn-link-reset" onclick="reiniciarBorrador()">Limpiar formulario</button>
+      </div>
+
+      <!-- Barra de navegación por pasos -->
+      <div class="stepper-bar" id="stepper-bar"></div>
+    </section>
+
+    <!-- Contenedor donde JavaScript inyecta los 5 pasos del formulario -->
+    <div id="form-container"></div>
+  </main>
+
+  <!-- === [SECCIÓN HTML 4: PIE DE PÁGINA CORPORATIVO] === -->
+  <footer class="app-footer">
+    <span>Compañía de Galletas Pozuelo DCR S.A. • Salud Ocupacional (SST) & Mantenimiento CAVS</span>
+  </footer>
+
+  <!-- === [SECCIÓN HTML 5: MOTOR DINÁMICO Y CONEXIÓN MICROSOFT] === -->
+  <script src="app.js"></script>
+</body>
+</html>
